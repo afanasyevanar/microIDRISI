@@ -27,11 +27,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    idrisiphoto.cpp
+    idrisiphoto.cpp \
+    layer.cpp
 
 HEADERS += \
         mainwindow.h \
-    idrisiphoto.h
+    idrisiphoto.h \
+    layer.h
 
 FORMS += \
         mainwindow.ui

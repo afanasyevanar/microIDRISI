@@ -16,7 +16,7 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_actionOpen_triggered();
+    void slotLoad();
 
 private:
     Ui::MainWindow *ui;
