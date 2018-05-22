@@ -28,12 +28,17 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     idrisiphoto.cpp \
-    layer.cpp
+    layer.cpp \
+    palette.cpp
 
 HEADERS += \
         mainwindow.h \
     idrisiphoto.h \
-    layer.h
+    layer.h \
+    palette.h
 
 FORMS += \
         mainwindow.ui
+
+RESOURCES += \
+    resourse.qrc

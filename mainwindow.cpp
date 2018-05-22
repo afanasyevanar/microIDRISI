@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QFileDialog>
 
-#include "idrisiphoto.h"
+#include "layer.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -23,6 +23,11 @@ MainWindow::MainWindow(QWidget *parent) :
     fileMenu->addAction(mapOpen);
 
     menuBar()->addMenu(fileMenu);
+
+    mdiArea = new QMdiArea();
+    mdiArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    mdiArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    setCentralWidget(mdiArea);
 }
 
 MainWindow::~MainWindow()
@@ -35,9 +40,10 @@ void MainWindow::slotLoad()
     QString fileName = QFileDialog::getOpenFileName(this,
         tr("Open IDRISI raster file"), QDir::homePath(), tr("IDRISI raster file (*.rst)"));
 
-    QString rdcFileName = fileName;
-    rdcFileName.replace(".rst", ".rdc");
+   Layer* layer = new Layer(fileName);
+   layer->setAttribute(Qt::WA_DeleteOnClose);
+   mdiArea->addSubWindow(layer);
+   layer->show();
 
-    IdrisiPhoto photo;
-    photo.readRDC(rdcFileName);
+
 }

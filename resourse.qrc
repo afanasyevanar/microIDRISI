@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>IDRIS256.SMP</file>
+    </qresource>
+</RCC>

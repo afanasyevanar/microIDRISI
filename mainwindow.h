@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMdiArea>
 
 namespace Ui {
 class MainWindow;
@@ -19,7 +20,8 @@ private slots:
     void slotLoad();
 
 private:
-    Ui::MainWindow *ui;
+   QMdiArea* mdiArea;
+   Ui::MainWindow *ui;
 };
 
 #endif // MAINWINDOW_H
