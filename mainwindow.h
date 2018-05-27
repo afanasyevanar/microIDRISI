@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QMdiArea>
+#include <QSignalMapper>
 
 namespace Ui {
 class MainWindow;
@@ -18,10 +19,23 @@ public:
 
 private slots:
     void slotLoad();
+    void slotSave();
+    void slotAbout();
+
+    void slotWindows();
+    void slotSetActiveSubWindow(QWidget* widget);
+    void closeAllWindows();
 
 private:
-   QMdiArea* mdiArea;
-   Ui::MainWindow *ui;
+    // TODO: Зарефакторить по стилю
+    QMenu* windowsMenu;
+    QMenu* helpMenu;
+
+    QMdiArea* mdiArea;
+    Ui::MainWindow *ui;
+
+    QSignalMapper* signalMapper;
+
 };
 
 #endif // MAINWINDOW_H

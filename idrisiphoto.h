@@ -23,6 +23,8 @@ public:
 
     uchar* getMatrix() const;
 
+    QString getMapName() const;
+
 private:
     std::tuple<QString, QString> parseLine(QString line);
     void extractMetadata();
@@ -31,6 +33,7 @@ private:
     int columns, rows, minValue, maxValue, displayMin, displayMax;
     QMap<QString, QString>* metadata;
     QByteArray* matrix;
+    QString mapName;
 };
 
 #endif // IDRISIPHOTO_H

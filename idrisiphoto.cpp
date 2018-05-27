@@ -20,13 +20,14 @@ IdrisiPhoto::IdrisiPhoto():
 
 IdrisiPhoto::~IdrisiPhoto()
 {
-    qDebug()<<"I am destructor";
+    qDebug()<<"Idrisi photo destructor";
 
-    auto iterator = metadata->constBegin();
-    while (iterator != metadata->constEnd()){
-        qDebug() << iterator.key() << ": " << iterator.value();
-        ++iterator;
-    }
+ //For Debug
+//    auto iterator = metadata->constBegin();
+//    while (iterator != metadata->constEnd()){
+//        qDebug() << iterator.key() << ": " << iterator.value();
+//        ++iterator;
+//    }
     delete metadata;
 }
 
@@ -53,16 +54,20 @@ bool IdrisiPhoto::readRDC(QString rdcFilename)
         lineLength= rdcFile.readLine(line, sizeof(line));
         if (lineLength != -1) {
             std::tie(key,value) = parseLine(QString::fromLocal8Bit(line, lineLength));
-           // if (metadata->contains(key)){
                 metadata->insertMulti(key, value);
-            //}else{
-             //   metadata->insert(key,value);
-            //}
         }
     }
+
     rdcFile.close();
 
+    int pointIndex = rdcFilename.lastIndexOf(".");
+    int slashIndex = rdcFilename.lastIndexOf("/");
+    mapName = rdcFilename.mid(slashIndex+1, pointIndex - slashIndex - 1);
+
+
     extractMetadata();
+
+
 
     return true;
 }
@@ -122,6 +127,11 @@ void IdrisiPhoto::extractMetadata()
     if (metadata->contains("display max")){
         displayMax = metadata->value("display max").toInt();
     }
+}
+
+QString IdrisiPhoto::getMapName() const
+{
+    return mapName;
 }
 
 uchar* IdrisiPhoto::getMatrix() const
