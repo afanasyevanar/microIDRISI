@@ -1,0 +1,24 @@
+file format : IDRISI Raster A.1
+file title  : Banda 2 Landsat-TM 
+data type   : byte
+file type   : binary
+columns     : 934
+rows        : 700
+ref. system : utm-30n
+ref. units  : m
+unit dist.  : 1.0000000
+min. X      : 343000.0000000
+max. X      : 371020.0000000
+min. Y      : 4457000.0000000
+max. Y      : 4478000.0000000
+pos'n error : unknown
+resolution  : unknown
+min. value  : 23
+max. value  : 96
+display min : 28
+display max : 54
+value units : dn
+value error : unknown
+flag value  : 0
+flag def'n  : none
+legend cats : 0
